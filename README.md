@@ -1,2 +1,2 @@
 # anapti3i
-Something mostly meaningless
+Just a small project
