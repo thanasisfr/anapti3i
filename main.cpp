@@ -3,9 +3,15 @@
 #include <fstream>
 #include "NList.h"
 
+int basicInsertTest(NList* indexList);
+
 int main(int argc, char** argv){
-
-
+    NList* indexList = new NList();
+    int error = basicInsertTest(indexList);
+    if (error != 0){
+        printf("Error during Insert Test return is %d\n", error);
+        return -1;
+    }
 
 	return 0;
 }
@@ -15,6 +21,22 @@ int main(int argc, char** argv){
 // and then insert at "eiserxomeni" direction 1<-3
 
 
+
+int basicInsertTest(NList* indexList){
+    indexList->initHeadNode(0);
+    for (int i = 0; i < 11; i++){
+        for (int j = 0; j < 70; j++){
+            NListNode *tempIndexListNode = indexList->getNodeById(i);
+            if (tempIndexListNode == NULL){
+                indexList->insertNode(i);
+                tempIndexListNode = indexList->getNodeById(i);
+            }
+            indexList->insertEdge(tempIndexListNode->node,j);
+        }
+    }
+    indexList->printContents("JustTesting.txt");
+	return 0;
+}
 
 
 void readStartupFile(char* fileName){
